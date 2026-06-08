@@ -1,0 +1,15 @@
+# Node
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+
+# Generated skill run-output (artifacts produced when a skill is RUN, never committed)
+# Scoped to repo root so it can't shadow skills/portfolio-review/ etc.
+/portfolio-review-output/
+*.local.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
