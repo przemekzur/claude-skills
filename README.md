@@ -27,6 +27,10 @@ npx skills add przemekzur/claude-skills --skill portfolio-review -a claude-code
 npx skills add przemekzur/claude-skills --all
 ```
 
+**Single-skill vs multi-skill repos.** A command like `npx skills add owner/repo` (no `--skill`) works when the repo *is* one skill, with `SKILL.md` at its root. This repo holds **multiple** skills under `skills/<name>/`, so you pass `--skill <name>` to pick one (or `--all` for everything). The `skills` CLI walks `skills/<name>/SKILL.md` one level deep — which is why the [repo layout](#repo-structure) keeps the new-skill template under `templates/`, not `skills/`.
+
+> **Known issue:** `npx skills update` on a single skill from a multi-skill repo currently re-downloads the whole repo before extracting the one skill ([vercel-labs/skills#1015](https://github.com/vercel-labs/skills/issues/1015)). It's a bandwidth/cosmetic quirk — `add` and the installed skill work correctly.
+
 ### Manually
 
 Skills are also picked up from `~/.claude/skills/` (user-level) or `<project>/.claude/skills/` (project-level). To install one by hand:
