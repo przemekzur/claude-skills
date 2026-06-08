@@ -5,7 +5,7 @@ A skill is a folder under `skills/` containing a `SKILL.md` and any supporting f
 ## 1. Scaffold
 
 ```bash
-cp -r skills/_template skills/my-skill
+cp -r templates/skill-template skills/my-skill
 ```
 
 ## 2. Fill in `SKILL.md`

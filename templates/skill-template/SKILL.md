@@ -1,5 +1,5 @@
 ---
-name: _template
+name: skill-template
 description: >-
   Replace this. Describe what the skill does and WHEN to use it, e.g.
   "Generate X from Y. Use when the user asks to …". This text is the trigger

@@ -12,7 +12,24 @@ Each skill lives in its own folder under [`skills/`](./skills) with a `SKILL.md`
 
 ## Installing a skill
 
-Skills are picked up from `~/.claude/skills/` (user-level) or `<project>/.claude/skills/` (project-level). To install one from this repo:
+### With the `skills` CLI (recommended)
+
+This repo follows the [`skills`](https://github.com/vercel-labs/skills) monorepo layout (`skills/<name>/SKILL.md`), so you can install a single skill from it directly:
+
+```bash
+# install one skill from this multi-skill repo
+npx skills add przemekzur/claude-skills --skill portfolio-review
+
+# target Claude Code specifically
+npx skills add przemekzur/claude-skills --skill portfolio-review -a claude-code
+
+# install every skill in the repo
+npx skills add przemekzur/claude-skills --all
+```
+
+### Manually
+
+Skills are also picked up from `~/.claude/skills/` (user-level) or `<project>/.claude/skills/` (project-level). To install one by hand:
 
 **Option A — copy**
 ```bash
@@ -46,19 +63,22 @@ Once installed, invoke a skill in Claude Code with `/<skill-name>` (e.g. `/portf
 claude-skills/
 ├── README.md
 ├── LICENSE
-├── CONTRIBUTING.md          # how to add a new skill
-├── skills/
-│   ├── _template/           # copy this to start a new skill
-│   │   └── SKILL.md
-│   └── portfolio-review/
-│       ├── SKILL.md
-│       └── scripts/
-│           └── render.mjs
+├── CONTRIBUTING.md              # how to add a new skill
+├── templates/
+│   └── skill-template/          # copy this to start a new skill (kept OUT of skills/
+│       └── SKILL.md             #   so the installer never treats it as a real skill)
+└── skills/                      # everything here is an installable skill
+    └── portfolio-review/
+        ├── SKILL.md
+        └── scripts/
+            └── render.mjs
 ```
+
+> Note: the `skills` CLI walks `skills/<name>/SKILL.md` one level deep — so anything placed directly under `skills/` is treated as an installable skill. The new-skill template lives under `templates/` for exactly this reason.
 
 ## Adding your own skill
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). The short version: copy `skills/_template/` to `skills/<your-skill>/`, fill in the `SKILL.md` frontmatter (`name`, `description`), and write the instructions.
+See [CONTRIBUTING.md](./CONTRIBUTING.md). The short version: copy `templates/skill-template/` to `skills/<your-skill>/`, fill in the `SKILL.md` frontmatter (`name`, `description`), and write the instructions.
 
 ## License
 
